@@ -1,0 +1,23 @@
+{
+  "name": "minoval-calendar",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "express": "*",
+    "errorhandler": "*",
+    "jade": "1.1.5",
+    "request": "*",
+    "connect": "2.x",
+    "tracer": "*",
+    "body-parser": "*",
+    "extend": "MarcusLongmuir/extend",
+    "minodb": "*",
+    "minoval": "*",
+    "minocms": "*",
+    "sendgrid": "1.3.0"
+  },
+  "devDependencies": {
+    "gulp-nodemon" : "*",
+    "gulp": "^3.6.1"
+  }
+}

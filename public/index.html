@@ -1,0 +1,66 @@
+<html>
+<head>
+	<title>Example</title>
+
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+	<script type="text/javascript" src="/fieldval/fieldval.js"></script>
+	<script type="text/javascript" src="/fieldval-basicval/fieldval-basicval.js"></script>
+	<script type="text/javascript" src="/fieldval-rules/fieldval-rules.js"></script>
+	<script type="text/javascript" src="/fieldval-ui/fieldval-ui.js"></script>
+	<script type="text/javascript" src="/fieldval-ui/themes/minimal.js"></script>
+
+	<script type="text/javascript" src="/mino/cms/minocms.js"></script>
+	<script type="text/javascript" src="/mino/minoval/minoval.js"></script>
+	
+	<link rel="stylesheet" type="text/css" href="/fieldval-ui/themes/minimal.css">
+
+</head>	
+
+<body>
+	
+	<div id="data"></div>
+
+	<div id="form_container"></div>
+
+	<script type="text/javascript">
+		
+		minocms.get("homepage", function(value) {
+			$("#data").text(value.mino_user.username);
+		})
+
+		console.log(minoval)
+
+		minoval.get_rule("contact_form", function(err, vr) {
+			var form = vr.create_form();
+
+			$("#form_container").append(
+				form.element.append(
+				    $("<button />").text("Submit")
+				),
+				output = $("<pre />")
+			)
+
+			form.on_submit(function(object){
+
+			    var error = vr.validate(object);
+			  
+			    if(error){
+			        console.log(error);
+			        form.error(error)
+			        output.text('"error": '+JSON.stringify(error,null,4));
+			    } else {
+			        form.clear_errors();
+			        output.text('"object": '+JSON.stringify(object,null,4));
+
+			        $.post("/send_email", object, function(res) {
+			        	console.log(res);
+			        })
+			    }
+			})
+		});
+
+	</script>
+
+</body>
+</html>
