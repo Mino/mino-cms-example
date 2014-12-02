@@ -58,7 +58,7 @@ server.post("/send_email", function(req, res) {
 	        "parameters": {
 	            "objects" : [{
 	                "name": body.contact.email + "_" + body.contact.subject + "_" + new Date().getTime(),
-	                "path":"/testuser/",
+	                "path":"/testuser/emails/",
 	                "contact": body.contact
 	            }]
 	        }
