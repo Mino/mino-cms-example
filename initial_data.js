@@ -1,8 +1,8 @@
 var logger = require('tracer').console();
 
-module.exports = function(sdk, minoval, done){
+module.exports = function(mino, minoval, done){
 
-	sdk.save_type({
+	mino.save_type({
 		"name":"contact_form",
 		"display_name":"Contact Form",
 		"type":"object",
@@ -43,20 +43,20 @@ module.exports = function(sdk, minoval, done){
 		}, function(err, res){
 			logger.log(JSON.stringify(err,null,4), res);
 
-			sdk.save([{
+			mino.save([{
 				"name": "emails",
 				"folder": true,
-				"path": "/testuser/"
+				"path": "/my_app/"
 			},{
 				"name": "cms",
 				"folder": true,
-				"path": "/testuser/"
+				"path": "/my_app/"
 			}], function(err, res){
 				logger.log(JSON.stringify(err,null,4), res);
 
-				sdk.save([{
+				mino.save([{
 					"name": "homepage",
-					"path": "/testuser/cms/",
+					"path": "/my_app/cms/",
 					"mino_user": {
 						"username": "THIS IS INITIAL",
 						"email": "t@t.com",
