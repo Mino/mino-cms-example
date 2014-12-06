@@ -1,5 +1,5 @@
 {
-  "name": "minoval-calendar",
+  "name": "mino-example",
   "version": "0.0.1",
   "private": true,
   "dependencies": {
@@ -10,10 +10,10 @@
     "connect": "2.x",
     "tracer": "*",
     "body-parser": "*",
-    "extend": "MarcusLongmuir/extend",
     "minodb": "*",
     "minoval": "*",
-    "minocms": "*",
+    "minosdk": "*",
+    "extend": "MarcusLongmuir/extend",
     "sendgrid": "1.3.0"
   },
   "devDependencies": {

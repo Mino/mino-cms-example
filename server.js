@@ -1,88 +1,55 @@
 var logger = require('tracer').console();
 var express = require('express');
-var http = require('http');
-var path = require('path');
-var bodyParser = require('body-parser');
-var errorHandler = require('errorhandler');
-
-var MinoDB = require('minodb');
-var MinoVal = require('minoval');
-var MinoCMS = require('minocms');
-var MinoSDK = require('minosdk');
-
 var sendgrid  = require('sendgrid')("bestan", "C2sEws3FIUdEK83GBD5a");
 
-var server = express();
-server.set('port', process.env.PORT || 5002);
-server.use(errorHandler());
-server.use(bodyParser());
-server.use(express.static(path.join(__dirname, 'public')));
-server.use(express.static(path.join(__dirname, 'bower_components')));
-
-var db_address = process.env.MONGOLAB_URI || 'mongodb://127.0.0.1:27017/minodb';
-var mino = new MinoDB({
-    api: true,
+var minoval = new (require('minoval'))({user: "testuser"})
+var mino = new (require('minodb'))({
     ui: true,
-    db_address: db_address
+    db_address: process.env.MONGOLAB_URI || 'mongodb://127.0.0.1:27017/minodb_tests'
 })
-server.use('/mino/', mino.server())
-
-var sdk = new MinoSDK("testuser");
-logger.log(sdk);
-sdk.set_local_api(mino.api);
-logger.log(sdk);
-
-var minoval = new MinoVal({user: "testuser"})
-mino.add_plugin(minoval);
-mino.add_plugin(new MinoCMS({
+.add_plugin(minoval)
+.add_plugin(new (require('minocms'))({
 	"folder_name": "cms",
 	"user": "testuser"
-}));
+}))
 
+var sdk = new (require('minosdk'))("testuser").set_local_api(mino.api);
+require('./initial_setup')(sdk);
 
-server.post("/send_email", function(req, res) {
-	var body = req.body;
-	logger.log(sdk);
-	minoval.validate("contact_form", body, function(validator) {
+express()
+.use(require('errorhandler')())
+.use(require('body-parser')())
+.use(express.static('./public'))
+.use('/mino/', mino.server())
+.post("/send_email", function(req, res) {
+	minoval.validate("contact_form", req.body, function(validator) {
 		var error = validator.end();
 		if (error) {
-			res.json(error)
-			return;
+			return res.json(error)
 		}
-
-		body.contact.finished = false;
-		body.contact.notes = "Sent";
-
-		sdk.call({
-	        "function": "save",
-	        "parameters": {
-	            "objects" : [{
-	                "name": body.contact.email + "_" + body.contact.subject + "_" + new Date().getTime(),
-	                "path":"/testuser/emails/",
-	                "contact": body.contact
-	            }]
-	        }
-	    }, function(error, response) {
+		req.body.contact_form.finished = false;
+		req.body.contact_form.notes = "Sent";
+		sdk.save([{
+            "name": req.body.contact_form.email + "_" + req.body.contact_form.subject + "_" + new Date().getTime(),
+            "path":"/testuser/emails/",
+            "contact_form": req.body.contact_form
+        }], function(error, response) {
 	    	if (error) {
-	    		res.json(error)
+	    		return res.json(error)
 	    	} else {
-
 	    		sendgrid.send({
-	    		  to:       'bestan93@gmail.com',
-	    		  from:     body.contact.email,
-	    		  subject:  body.contact.subject,
-	    		  text:     body.contact.message
+					to: 'marcus@minocloud.com',
+					from: req.body.contact_form.email,
+					subject: req.body.contact_form.subject,
+					text: req.body.contact_form.message
 	    		}, function(err, json) {
-	    		  if (err) { return console.error(err); }
-	    		  console.log(json);
+	    		 	if (err) { 
+	    		 		logger.error(err)
+	    		 		return res.json(err);
+					}
+					res.json({success:true})
 	    		});
-	    		
-	    		res.json({success:true})
 	    	}
 		});
 	});
-})
-
-http.createServer(server).listen(server.get('port'), function() {
-    console.log('Server started on port ' + server.get('port'));
-});
+}).listen(process.env.PORT || 5002);
