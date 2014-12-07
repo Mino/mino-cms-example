@@ -9,8 +9,14 @@
 <link rel="stylesheet" type="text/css" href="/bower_components/fieldval-ui/themes/minimal.css">
 <script type="text/javascript">
 $(document).ready(function(){
+	$("body").append(
+		$("<div/>").minocms_text("homepage.headline"),
+		$("<div/>").minocms_text("homepage.body"),
+		$("<div/>").minocms_html("homepage.some_html")
+	)
+
 	minocms.get("homepage", function(value) {
-		$("<div/>").text(value.mino_user.username).prependTo("body");
+		alert(JSON.stringify(value));
 	})
 	minoval.get_rule("contact_form", function(err, vr) {
 		var form = vr.create_form();

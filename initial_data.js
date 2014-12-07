@@ -57,11 +57,10 @@ module.exports = function(mino, minoval, done){
 				mino.save([{
 					"name": "homepage",
 					"path": "/my_app/cms/",
-					"mino_user": {
-						"username": "THIS IS INITIAL",
-						"email": "t@t.com",
-						"salted_password": "SALTEDPASSWORDFTW",
-						"password_salt": "PASSWORDSALTFTW"
+					"cms": {
+						"headline": "THIS IS INITIAL HEADLINE",
+						"body": "THIS IS INITIAL BODY",
+						"some_html": "<img width=\"50\" height=\"50\" src=\"http://www.w3devcampus.com/wp-content/uploads/logoAndOther/logo_JavaScript.png\" /><div>This is <b>HTML</b></div>"
 					}
 				}], function(err, res){
 					logger.log(JSON.stringify(err,null,4), res);
