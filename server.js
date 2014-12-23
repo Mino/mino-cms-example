@@ -16,13 +16,13 @@ require('./mino_setup')(function(mino,minoval){
 				return res.json(error)
 			}
 
-			req.body.contact_form.finished = false;
-			req.body.contact_form.notes = "Sent";
+			req.body.finished = false;
+			req.body.notes = "Sent";
 			
 			mino.save([{
-	            "name": req.body.contact_form.email + "_" + req.body.contact_form.subject + "_" + new Date().getTime(),
+	            "name": req.body.email + "_" + req.body.subject + "_" + new Date().getTime(),
 	            "path":"/my_app/emails/",
-	            "contact_form": req.body.contact_form
+	            "contact_form": req.body
 	        }], function(error, response) {
 
 		    	if (error) {
@@ -30,10 +30,10 @@ require('./mino_setup')(function(mino,minoval){
 		    	} else {
 
 		    		sendgrid.send({
-						to: 'marcus@minocloud.com',
-						from: req.body.contact_form.email,
-						subject: req.body.contact_form.subject,
-						text: req.body.contact_form.message
+						to: 'bestan93@gmail.com',
+						from: req.body.email,
+						subject: req.body.subject,
+						text: req.body.message
 		    		}, function(err, json) {
 		    		 	if (err) { 
 		    		 		logger.error(err)
