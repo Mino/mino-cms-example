@@ -10,7 +10,7 @@ require('./mino_setup')(function(mino,minoval){
 	.use('/mino/', mino.server())
 	.post("/send_email", function(req, res) {
 
-		minoval.validate("contact_form", req.body, function(validator) {
+		minoval.validate("contact_form", req.body, function(err, validator) {
 			var error = validator.end();
 			if (error) {
 				return res.json(error)

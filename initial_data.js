@@ -32,7 +32,7 @@ module.exports = function(mino, minoval, done){
 	}, function(err, res){
 		logger.log(JSON.stringify(err,null,4), res);
 
-		minoval.save_endpoint({
+		minoval.save_rule({
 			"name": "contact_form",
 			"mino_type" : {
 			    "name" : "contact_form",
@@ -42,20 +42,20 @@ module.exports = function(mino, minoval, done){
 			        {
 			            "name" : "email",
 			            "display_name" : "Email",
-			            "type" : "minoval_field",
-			            "minoval_field" : "contact_form.email"
+			            "type" : "mino_field",
+			            "mino_field" : "contact_form.email"
 			        }, 
 			        {
 			            "name" : "subject",
 			            "display_name" : "Subject",
-			            "type" : "minoval_field",
-			            "minoval_field" : "contact_form.subject"
+			            "type" : "mino_field",
+			            "mino_field" : "contact_form.subject"
 			        }, 
 			        {
 			            "name" : "message",
 			            "display_name" : "Message",
-			            "type" : "minoval_field",
-			            "minoval_field" : "contact_form.message"
+			            "type" : "mino_field",
+			            "mino_field" : "contact_form.message"
 			        }
 			    ]
 			}

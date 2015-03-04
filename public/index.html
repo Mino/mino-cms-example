@@ -1,6 +1,5 @@
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="/bower_components/fieldval/fieldval.js"></script>
-<script type="text/javascript" src="/bower_components/fieldval-basicval/fieldval-basicval.js"></script>
 <script type="text/javascript" src="/bower_components/fieldval-ui/fieldval-ui.js"></script>
 <script type="text/javascript" src="/bower_components/fieldval-ui/themes/minimal.js"></script>
 <script type="text/javascript" src="/bower_components/fieldval-rules/fieldval-rules.js"></script>
@@ -15,16 +14,13 @@ $(document).ready(function(){
 		$("<div/>").minocms_html("homepage.some_html")
 	)
 
-	minocms.get("homepage", function(value) {
-		alert(JSON.stringify(value));
-	})
-	minoval.get_endpoint("contact_form", function(err, vr) {
+	minoval.get_rule("contact_form", function(err, vr) {
 		var form = vr.create_form();
 		$("body").append(
 			form.on_submit(function(object){
 				form.clear_errors();
 		        $.post("/send_email", object, function(res) {
-					form.error(res);
+					if (res.error) form.error(res);
 					output.text(JSON.stringify(res,null,4));  	
 		        })
 			}).element.append(
