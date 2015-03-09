@@ -1,5 +1,5 @@
 {
-  "name": "mino-example",
+  "name": "mino-cms-example",
   "version": "0.0.1",
   "dependencies": {
     "jquery": "1.11.1",
