@@ -24,7 +24,8 @@ node server.js
 
 ##Things to try
 * Go to the [homepage](http://mino-cms-example.herokuapp.com), fill in the contact form and submit it. At this point you would normally send an email, but for the sake of the example we're just storing the entry in ```emails``` folder.
-* Navigate to the ```emails``` folder in the [Browser](http://mino-cms-example.herokuapp.com/mino/browser/) and check one of the items that you've just submitted.
+* Log in to the [Browser](http://mino-cms-example.herokuapp.com/mino/browser/) using credentials above.
+* Navigate to the ```emails``` folder and check one of the items that you've just submitted.
 * Navigate to the ```cms``` folder and edit the ```homepage``` item. Refresh the homepage to see changes immediately.
 
 ##Code to read
