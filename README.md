@@ -21,6 +21,7 @@ Login details:
 npm install
 node server.js
 ```
+You also need [MongoDB](http://www.mongodb.org/) running on ```mongodb://127.0.0.1:27017/mino-example``` (URL can be changed in [mino_setup.js](mino_setup.js)).
 
 ##Things to try
 * Go to the [homepage](http://mino-cms-example.herokuapp.com), fill in the contact form and submit it. At this point you would normally send an email, but for the sake of the example we're just storing the entry in ```emails``` folder.
