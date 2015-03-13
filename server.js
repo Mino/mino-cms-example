@@ -23,17 +23,14 @@ require('./mino_setup')(function(mino,minoval){
 	            "path":"/my_app/emails/",
 	            "contact_form": req.body
 	        }], function(error, response) {
-
 		    	if (error) {
 		    		return res.json(error);
 		    	} else {
 		    		//Send email here
 		    		return res.json({success:true});
 		    	}
-
 			});
 
 		});
-
 	}).listen(process.env.PORT || 5002);
 });

@@ -1,4 +1,3 @@
-var logger = require('tracer').console();
 var MinoDB = require('minodb');
 var MinoCMS = require('minocms');
 var MinoVal = require('minoval');
@@ -24,10 +23,7 @@ module.exports = function(callback){
 		"password": "my_password"
 	}, function(err, res){
 
-		logger.log("CREATED USER");
-
 		mino.add_plugin(minocms, minoval, function(){
-			logger.log("FINISHED PLUGINS");
 			require('./initial_data')(mino, minoval, function(){
 				callback(mino,minoval);
 			});
