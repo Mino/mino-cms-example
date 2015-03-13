@@ -14,7 +14,7 @@ Login details:
 * username: my_app
 * password: my_password
 
-Deploy your own: [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/bestan/mino-cms-example)
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/bestan/mino-cms-example)
 
 ##Installation
 ```
