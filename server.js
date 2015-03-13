@@ -1,6 +1,5 @@
 var logger = require('tracer').console();
 var express = require('express');
-var sendgrid  = require('sendgrid')("bestan", "C2sEws3FIUdEK83GBD5a");
 
 require('./mino_setup')(function(mino,minoval){
 	express()
@@ -26,22 +25,10 @@ require('./mino_setup')(function(mino,minoval){
 	        }], function(error, response) {
 
 		    	if (error) {
-		    		return res.json(error)
+		    		return res.json(error);
 		    	} else {
-
-		    		sendgrid.send({
-						to: 'bestan93@gmail.com',
-						from: req.body.email,
-						subject: req.body.subject,
-						text: req.body.message
-		    		}, function(err, json) {
-		    		 	if (err) { 
-		    		 		logger.error(err)
-		    		 		return res.json(err);
-						}
-						res.json({success:true})
-		    		});
-		    		
+		    		//Send email here
+		    		return res.json({success:true});
 		    	}
 
 			});

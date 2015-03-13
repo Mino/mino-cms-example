@@ -14,7 +14,6 @@
     "minoval": "MarcusLongmuir/MinoVal#master",
     "minocms": "bestan/MinoCMS#master",
     "extend": "MarcusLongmuir/extend",
-    "sendgrid": "1.3.0",
     "bower": "*"
   },
   "devDependencies": {
