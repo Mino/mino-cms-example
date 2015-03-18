@@ -4,6 +4,14 @@
   "repository": "https://github.com/bestan/mino-cms-example",
   "logo": "https://node-js-sample.herokuapp.com/node.svg",
   "keywords": ["minodb", "node", "mongodb", "express", "cms", "contact form"],
+  "env": {
+    "MINO_USERNAME": {
+      "description": "Mino username"
+    },
+    "MINO_PASSWORD": {
+      "description": "Mino password"
+    }
+  },
   "addons": [
     "mongolab"
   ]
