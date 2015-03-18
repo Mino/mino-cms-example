@@ -1,6 +1,8 @@
 var logger = require('tracer').console();
 var express = require('express');
 
+var username = process.env.MINO_USERNAME || "my_app";
+
 require('./mino_setup')(function(mino,minoval){
 	express()
 	.use(require('errorhandler')())
@@ -20,8 +22,8 @@ require('./mino_setup')(function(mino,minoval){
 			
 			mino.save([{
 	            "name": req.body.email + "_" + req.body.subject + "_" + new Date().getTime(),
-	            "path":"/my_app/emails/",
-	            "contact_form": req.body
+	            "path":"/" + username + "/contact_entries/",
+	            "contact_entry": req.body
 	        }], function(error, response) {
 		    	if (error) {
 		    		return res.json(error);

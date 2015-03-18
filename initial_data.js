@@ -1,10 +1,10 @@
 var logger = require('tracer').console();
 
 module.exports = function(mino, minoval, done){
-
+	var username = process.env.MINO_USERNAME || "my_app";
 	mino.save_type({
-		"name":"contact_form",
-		"display_name":"Contact Form",
+		"name":"contact_entry",
+		"display_name":"Contact Entry",
 		"type":"object",
 		"fields":[
 			{
@@ -43,19 +43,19 @@ module.exports = function(mino, minoval, done){
 			            "name" : "email",
 			            "display_name" : "Email",
 			            "type" : "mino_field",
-			            "mino_field" : "contact_form.email"
+			            "mino_field" : "contact_entry.email"
 			        }, 
 			        {
 			            "name" : "subject",
 			            "display_name" : "Subject",
 			            "type" : "mino_field",
-			            "mino_field" : "contact_form.subject"
+			            "mino_field" : "contact_entry.subject"
 			        }, 
 			        {
 			            "name" : "message",
 			            "display_name" : "Message",
 			            "type" : "mino_field",
-			            "mino_field" : "contact_form.message"
+			            "mino_field" : "contact_entry.message"
 			        }
 			    ]
 			}
@@ -63,19 +63,19 @@ module.exports = function(mino, minoval, done){
 			logger.log(JSON.stringify(err,null,4), res);
 
 			mino.save([{
-				"name": "emails",
+				"name": "contact_entries",
 				"folder": true,
-				"path": "/my_app/"
+				"path": "/" + username + "/"
 			},{
 				"name": "cms",
 				"folder": true,
-				"path": "/my_app/"
+				"path": "/" + username + "/"
 			}], function(err, res){
 				logger.log(JSON.stringify(err,null,4), res);
 
 				mino.save([{
 					"name": "homepage",
-					"path": "/my_app/cms/",
+					"path": "/" + username + "/cms/",
 					"cms_content": {
 						"headline": "THIS IS INITIAL HEADLINE",
 						"body": "THIS IS INITIAL BODY",
