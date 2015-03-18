@@ -30,7 +30,7 @@ You also need [MongoDB](http://www.mongodb.org/) running on ```mongodb://127.0.0
 * Navigate to the ```cms``` folder and edit the ```homepage``` item. Refresh the homepage to see changes immediately.
 
 ##Code to read
-* [server.js](server.js) - backend code with all endpoints (**36 lines in total**)
+* [server.js](server.js) - backend code with all endpoints (**38 lines in total**)
 * [index.html](public/index.html) - frontend code with CMS values and contact form (**33 lines in total**)
 * [initial_data.js](initial_data.js) - creates initial data such as types and MinoVal rule. All of it can be created using Browser and MinoVal UI.
-* [mino_setup.js](mino_setup.js) - sets up Mino with all its dependencies (**33 lines in total**)
+* [mino_setup.js](mino_setup.js) - sets up Mino with all its dependencies (**34 lines in total**)
