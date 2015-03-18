@@ -19,9 +19,9 @@ module.exports = function(callback){
 	}, username)
 
 	mino.create_user({
-		"username": process.env.MINO_USERNAME || username,
+		"username": username,
 		"email": "email@example.com",
-		"password": process.env.MINO_USERNAME || "my_password"
+		"password": process.env.MINO_PASSWORD || "my_password"
 	}, function(err, res){
 
 		mino.add_plugin(minocms, minoval, function(){
