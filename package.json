@@ -10,9 +10,9 @@
     "connect": "2.x",
     "tracer": "*",
     "body-parser": "*",
-    "minodb": "MarcusLongmuir/MinoDB#develop",
-    "minoval": "MarcusLongmuir/MinoVal#master",
-    "minocms": "bestan/MinoCMS#master",
+    "minodb": "Mino/MinoDB#develop",
+    "minoval": "Mino/MinoVal#master",
+    "minocms": "Mino/MinoCMS#master",
     "extend": "MarcusLongmuir/extend",
     "bower": "*"
   },
