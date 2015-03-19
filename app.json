@@ -1,7 +1,7 @@
 {
   "name": "MinoDB CMS example",
   "description": "Lightweight example with built-in CMS and contact form",
-  "repository": "https://github.com/bestan/mino-cms-example",
+  "repository": "https://github.com/Mino/mino-cms-example",
   "logo": "https://node-js-sample.herokuapp.com/node.svg",
   "keywords": ["minodb", "node", "mongodb", "express", "cms", "contact form"],
   "env": {
