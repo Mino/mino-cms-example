@@ -1,7 +1,7 @@
 MinoDB CMS example
 ======
 
-Example using [MinoDB](https://github.com/MarcusLongmuir/MinoDB/), [MinoVal](https://github.com/MarcusLongmuir/MinoVal/) and [MinoCMS](https://github.com/bestan/minocms).
+Example using [MinoDB](https://github.com/Mino/MinoDB/), [MinoVal](https://github.com/Mino/MinoVal/) and [MinoCMS](https://github.com/Mino/minocms).
 
 ##Features
 * Setting text and html values from CMS storage
