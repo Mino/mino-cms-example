@@ -34,7 +34,7 @@ module.exports = function(mino, minoval, done){
 
 		minoval.save_rule({
 			"name": "contact_form",
-			"mino_type" : {
+			"minodb_type" : {
 			    "name" : "contact_form",
 			    "display_name" : "Contact form",
 			    "type" : "object",
@@ -42,20 +42,20 @@ module.exports = function(mino, minoval, done){
 			        {
 			            "name" : "email",
 			            "display_name" : "Email",
-			            "type" : "mino_field",
-			            "mino_field" : "contact_entry.email"
+			            "type" : "minodb_field",
+			            "minodb_field" : "contact_entry.email"
 			        }, 
 			        {
 			            "name" : "subject",
 			            "display_name" : "Subject",
-			            "type" : "mino_field",
-			            "mino_field" : "contact_entry.subject"
+			            "type" : "minodb_field",
+			            "minodb_field" : "contact_entry.subject"
 			        }, 
 			        {
 			            "name" : "message",
 			            "display_name" : "Message",
-			            "type" : "mino_field",
-			            "mino_field" : "contact_entry.message"
+			            "type" : "minodb_field",
+			            "minodb_field" : "contact_entry.message"
 			        }
 			    ]
 			}

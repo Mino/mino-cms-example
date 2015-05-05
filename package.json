@@ -10,10 +10,10 @@
     "connect": "2.x",
     "tracer": "*",
     "body-parser": "*",
-    "minodb": "Mino/MinoDB#develop",
-    "minoval": "Mino/MinoVal#master",
-    "minocms": "Mino/MinoCMS#master",
-    "extend": "MarcusLongmuir/extend",
+    "minodb": "Mino/MinoDB#50c1588dc68813d14e8a6fd661713ae8ab29a5a2",
+    "minoval": "Mino/MinoVal#bc4f1fdcf507134106dfd19eb435c7fb2722b411",
+    "minocms": "Mino/MinoCMS#eae5c2eea8635f24dd2421ad5e3b369880ae72f1",
+    "extend": "MarcusLongmuir/extend#ab161eb5e479a74da6206d7f589892cabe29ecb7",
     "bower": "*"
   },
   "devDependencies": {
